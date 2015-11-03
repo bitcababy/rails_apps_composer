@@ -23,7 +23,7 @@ prefs[:prod_webserver] = prefs[:dev_webserver] if prefs[:prod_webserver] == 'sam
 ## Database Adapter
 prefs[:database] = "sqlite" if prefer :database, 'default'
 prefs[:database] = multiple_choice "Database used in development?", [["SQLite", "sqlite"], ["PostgreSQL", "postgresql"],
-  ["MySQL", "mysql"]] unless prefs.has_key? :database
+  ["MySQL", "mysql"], ["Mongo", "mongo"]] unless prefs.has_key? :database
 
 ## Template Engine
 prefs[:templates] = multiple_choice "Template engine?", [["ERB", "erb"], ["Haml", "haml"], ["Slim", "slim"]] unless prefs.has_key? :templates

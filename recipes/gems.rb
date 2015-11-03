@@ -40,6 +40,8 @@ gsub_file 'Gemfile', /gem 'pg'.*/, ''
 add_gem 'pg' if prefer :database, 'postgresql'
 gsub_file 'Gemfile', /gem 'mysql2'.*/, ''
 add_gem 'mysql2', '~> 0.3.18' if prefer :database, 'mysql'
+gsub_file 'Gemfile', /gem 'mongoid'.*/, ''
+add_gem 'mongoid', if prefer :database, 'mongoid'
 
 ## Gem to set up controllers, views, and routing in the 'apps4' recipe
 add_gem 'rails_apps_pages', :group => :development if prefs[:apps4]
@@ -59,6 +61,7 @@ end
 if prefer :tests, 'rspec'
   add_gem 'rails_apps_testing', :group => :development
   add_gem 'rspec-rails', :group => [:development, :test]
+  add_gem 'mongoid-rspec', :group => [:development, :test] if prefer :database, 'mongo'
   add_gem 'spring-commands-rspec', :group => :development
   add_gem 'factory_girl_rails', :group => [:development, :test]
   add_gem 'faker', :group => [:development, :test]
